@@ -32,6 +32,7 @@ pub struct UniformBufferObject {
     pub model: Matrix4<f32>,
     pub view: Matrix4<f32>,
     pub proj: Matrix4<f32>,
+    pub params: [f32; 4],
 }
 
 pub unsafe extern "system" fn vulkan_debug_callback(
