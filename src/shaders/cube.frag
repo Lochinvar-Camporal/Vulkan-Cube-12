@@ -20,6 +20,7 @@ void main() {
     float falloff = max(0.0, 1.0 - r2);
     vec2 refracted = gl_FragCoord.xy + disp * falloff * ubo.params.z * 100.0;
     float n = rand(floor(refracted / 20.0));
-    float edge = smoothstep(0.9, 1.0, length(disp));
-    outColor = vec4(vec3(n), 0.3) + vec4(edge);
+
+    outColor = vec4(vec3(n), 0.3);
+
 }
