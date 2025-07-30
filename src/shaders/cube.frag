@@ -15,11 +15,12 @@ float rand(vec2 co) {
 }
 
 void main() {
-    vec2 disp = worldPos.xy - ubo.params.xy;
+
+    vec3 disp = worldPos - ubo.params.xyz;
     float r2 = dot(disp, disp);
     float falloff = max(0.0, 1.0 - r2);
-    vec2 refracted = gl_FragCoord.xy + disp * falloff * ubo.params.z * 100.0;
+    vec2 refracted = gl_FragCoord.xy + disp.xy * falloff * ubo.params.w * 100.0;
     float n = rand(floor(refracted / 20.0));
-    float edge = smoothstep(0.9, 1.0, length(disp));
-    outColor = vec4(vec3(n), 0.3) + vec4(edge);
+    outColor = vec4(vec3(n), 0.6);
+
 }
